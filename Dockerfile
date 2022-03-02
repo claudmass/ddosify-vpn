@@ -10,7 +10,8 @@
     WORKDIR /home
     
     COPY autovpn3.sh ./
-    RUN chmod +x ./autovpn3.sh && ./autovpn3.sh | echo "Y"
+    CMD chmod +x ./autovpn3.sh && ./autovpn3.sh | echo "Y"
 
 
-    RUN curl -sSfL https://raw.githubusercontent.com/ddosify/ddosify/master/scripts/install.sh | sh
+    RUN wget https://github.com/ddosify/ddosify/releases/latest/download/ddosify_amd64.deb
+    RUN dpkg -i ddosify_amd64.deb
